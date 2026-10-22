@@ -1,0 +1,14 @@
+id,type,evidence_section,hit@1,full@1,hit@3,full@3,hit@5,full@5,top3_sections
+1,A,Playback,1,1,1,1,1,1,Playback | Manufacturing | Introduction
+2,A,Manufacturing,1,1,1,1,1,1,Manufacturing | Playback | Contents
+3,A,Contents,1,1,1,1,1,1,Contents | Contents | Contents
+4,A,Contents,1,1,1,1,1,1,Contents | Background | Introduction
+5,A,Contents,0,0,1,1,1,1,Contents | Contents | Contents
+6,A,Background,1,1,1,1,1,1,Background | Contents | Contents
+7,A,Manufacturing,0,0,1,1,1,1,Contents | Manufacturing | Publications
+8,A,Publications,1,1,1,1,1,1,Publications | Publications | Contents
+9,A,Manufacturing,1,1,1,1,1,1,Manufacturing | Playback | Contents
+10,B,Background|Contents|Playback,0,0,1,0,1,0,Introduction | Contents | Background
+11,B,Contents,1,0,1,1,1,1,Contents | Contents | Publications
+14,D,Introduction|Journey,1,0,1,1,1,1,Journey | Introduction | Journey
+15,D,Contents,1,0,1,1,1,1,Contents | Contents | Contents
