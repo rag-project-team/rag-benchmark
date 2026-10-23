@@ -21,10 +21,10 @@ MODEL_NAME = "qwen3:4b-instruct"
 
 SYSTEM_PROMPT = """
 Rules:
-- Answer the question concisely.
-- If you do not know the answer, say: I don't know.
+- If you do not know the answer, reply exactly: I don't know.
 - Do not guess.
 - Do not invent information.
+- Keep the answer concise.
 """
 
 options = {
