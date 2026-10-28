@@ -103,9 +103,37 @@ def chunk_document(path: str | Path,
     return chunks
 
 
+def chunk_by_paragraph(path: str | Path) -> list[Chunk]:
+    """Her paragrafı (boş satırla ayrılmış) bir parça yapar.
+
+    Bölüm başlığı olmayan paralel metinler (ör. Amazon TR/EN) için:
+    parça sınırları iki dilde aynı yere düşer. Bölüm adı P1, P2, ...
+    olur; sorular_*.csv'deki evidence_section ile aynıdır.
+    """
+    path = Path(path)
+    document_id = path.stem
+    # Windows'ta Git satır sonlarını \r\n yapabilir; bölmeden önce eşitliyoruz
+    text = path.read_text(encoding="utf-8").replace("\r\n", "\n")
+    paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
+    return [
+        Chunk(
+            id=f"{document_id}-{i:03d}",
+            document_id=document_id,
+            section_title=f"P{i + 1}",
+            chunk_index=0,
+            text=p,
+        )
+        for i, p in enumerate(paragraphs)
+    ]
+
+
 if __name__ == "__main__":
-    file = sys.argv[1] if len(sys.argv) > 1 else "data/voyager_clean.txt"
-    result = chunk_document(file)
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    file = args[0] if args else "data/voyager_clean.txt"
+    if "--paragraphs" in sys.argv:
+        result = chunk_by_paragraph(file)
+    else:
+        result = chunk_document(file)
     print(f"Toplam parça: {len(result)}\n")
     for c in result:
         preview = c.text[:70].replace("\n", " ")
