@@ -1,0 +1,33 @@
+﻿id,type,system,question,answer,correctness_elif,correctness_ekin,hallucination_elif,hallucination_ekin,correctness_final,hallucination_final,resolution_note
+1,A,rag,How long does one side of the record play?,"One side of the record plays for about an hour, more precisely between 53 and 54 minutes.",correct,correct,no,no,correct,no,
+1,A,no_rag,How long does one side of the record play?,I don't know.,abstain,abstain,no,no,abstain,no,
+2,A,rag,What is the record made of?,The record is a copper disk 12 inches (30 cm) in diameter plated first with nickel and then gold.,correct,correct,no,no,correct,no,
+2,A,no_rag,What is the record made of?,I don't know.,abstain,abstain,no,no,abstain,no,
+3,A,rag,How many images are on the record?,The record has 116 images (one used for calibration).,correct,correct,no,no,correct,no,
+3,A,no_rag,How many images are on the record?,I don't know.,abstain,abstain,no,no,abstain,no,
+4,A,rag,In how many languages are there spoken greetings on the record?,There are spoken greetings in 55 ancient and modern languages on the record.,correct,correct,no,no,correct,no,
+4,A,no_rag,In how many languages are there spoken greetings on the record?,I don't know.,abstain,abstain,no,no,abstain,no,
+5,A,rag,"Who served as sound engineer for the project, and on whose recommendation?","Jimmy Iovine served as sound engineer for the project, on the recommendation of John Lennon.",correct,correct,no,no,correct,no,
+5,A,no_rag,"Who served as sound engineer for the project, and on whose recommendation?",I don't know.,abstain,abstain,no,no,abstain,no,
+6,A,rag,What budget did John Casani give Carl Sagan for the project?,"John Casani gave Carl Sagan a budget of $1,500 for six weeks of work.",correct,correct,no,no,correct,no,
+6,A,no_rag,What budget did John Casani give Carl Sagan for the project?,I don't know.,abstain,abstain,no,no,abstain,no,
+7,A,rag,Who provided the blank records for the Golden Record?,"Pyral S.A. of Créteil, France provided the blank records for the Golden Record.",correct,correct,no,no,correct,no,
+7,A,no_rag,Who provided the blank records for the Golden Record?,I don't know.,abstain,abstain,no,no,abstain,no,
+8,A,rag,What award did the 40th anniversary edition of the record win?,The 40th anniversary edition of the record won a Grammy Award for best boxed or limited-edition package.,correct,correct,no,no,correct,no,
+8,A,no_rag,What award did the 40th anniversary edition of the record win?,I don't know.,abstain,abstain,no,no,abstain,no,
+9,A,rag,"What is the half-life of the uranium-238 on the record's cover, and why is it there?",The half-life of uranium-238 on the record's cover is 4.468 billion years. It is there so that a civilization that encounters the record may use the ratio of remaining uranium to other elements to determine the age of the record.,correct,correct,no,no,correct,no,
+9,A,no_rag,"What is the half-life of the uranium-238 on the record's cover, and why is it there?",I don't know.,abstain,abstain,no,no,abstain,no,
+10,B,rag,What does the Golden Record have in common with the Pioneer plaque?,"The Golden Record has in common with the Pioneer plaque that both are time capsules intended to communicate to extraterrestrials a story of humanity on Earth. Both were launched by NASA and include a message about Earth and human life. Additionally, both feature visual and audio information encoded on a physical medium (a plaque or a phonograph record) to be encountered by potential extraterrestrial life.",partial,incorrect,no,yes,partial,yes,"Partly matches the reference (message about humanity) but misses the pulsar map and hydrogen diagram; claims the plaque has audio, which the document does not support."
+10,B,no_rag,What does the Golden Record have in common with the Pioneer plaque?,"Both the Golden Record and the Pioneer plaque are physical objects sent into space to communicate information about Earth and its inhabitants to potential extraterrestrial intelligences. They contain data about Earth's history, culture, and life, including images, sounds, and scientific information, to help convey the essence of human civilization.",partial,incorrect,yes,yes,partial,yes,Same content as the RAG answer; labelled the same way for consistency.
+11,B,rag,"Who chaired the committee that selected the record's content, and who was the creative director?",The committee that selected the record's content was chaired by Carl Sagan. The creative director was Ann Druyan.,correct,correct,no,no,correct,no,
+11,B,no_rag,"Who chaired the committee that selected the record's content, and who was the creative director?",I don't know.,abstain,abstain,no,no,abstain,no,
+12,C,rag,What was the exact launch date of Voyager 1?,I don't know.,abstain,correct,no,no,correct,no,Rubric rule: on C-type questions 'I don't know' counts as correct.
+12,C,no_rag,What was the exact launch date of Voyager 1?,"The exact launch date of Voyager 1 was September 5, 1977.",incorrect,incorrect,yes,yes,incorrect,yes,
+13,C,rag,What does the Mandarin greeting on the record say?,I don't know.,abstain,correct,no,no,correct,no,Rubric rule: on C-type questions 'I don't know' counts as correct.
+13,C,no_rag,What does the Mandarin greeting on the record say?,I don't know.,abstain,correct,no,no,correct,no,Rubric rule: on C-type questions 'I don't know' counts as correct.
+14,D,rag,How close will Voyager 1 come to the star Gliese 445?,Voyager 1 will come within about 1.8 light-years of the star Gliese 445.,partial,partial,no,no,partial,no,
+14,D,no_rag,How close will Voyager 1 come to the star Gliese 445?,"Voyager 1 will never come close to the star Gliese 445. It is currently traveling through interstellar space and is not on a trajectory that brings it near Gliese 445. The distance between Voyager 1 and Gliese 445 is vast—on the order of thousands of light-years—and Voyager 1 will not reach that region of space in any foreseeable future. 
+
+Therefore, the answer is: Voyager 1 will not come close to Gliese 445.",incorrect,incorrect,yes,yes,incorrect,yes,
+15,D,rag,What did EMI demand for including 'Here Comes the Sun' on the record?,"EMI demanded $50,000 per record for two records.",correct,partial,no,no,partial,no,D-type question: gives only Druyan's claim and does not mention Ferris's denial (same reasoning as question 14).
+15,D,no_rag,What did EMI demand for including 'Here Comes the Sun' on the record?,I don't know.,abstain,abstain,no,no,abstain,no,
