@@ -35,13 +35,7 @@ from pathlib import Path
 from openai import AsyncOpenAI
 import ragas
 from ragas.llms import llm_factory
-from ragas.metrics.collections import (
-    ContextPrecision,
-    ContextRecall,
-    FactualCorrectness,
-    Faithfulness,
-)
-
+from ragas.metrics.collections import Faithfulness
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from chunking import chunk_document  # noqa: E402
 
@@ -95,23 +89,23 @@ def build_samples():
 
 
 def metric_calls(llm, s):
-    """(metric name, coroutine factory) pairs for one sample."""
-    calls = []
-    if s["system"] == "rag":
-        calls += [
-            ("faithfulness", lambda: Faithfulness(llm=llm).ascore(
-                user_input=s["question"], response=s["answer"],
-                retrieved_contexts=s["contexts"])),
-            ("context_precision", lambda: ContextPrecision(llm=llm).ascore(
-                user_input=s["question"], reference=s["reference"],
-                retrieved_contexts=s["contexts"])),
-            ("context_recall", lambda: ContextRecall(llm=llm).ascore(
-                user_input=s["question"], retrieved_contexts=s["contexts"],
-                reference=s["reference"])),
-        ]
-    calls.append(("factual_correctness", lambda: FactualCorrectness(llm=llm).ascore(
-        response=s["answer"], reference=s["reference"])))
-    return calls
+    """(metric name, coroutine factory) pairs for one sample.
+
+    Only faithfulness is computed, and only for RAG rows:
+    - correctness is measured by the two-annotator human evaluation
+      (RAGAS factual_correctness scored a correct Q1 answer 0.0 because
+      the reference answers are short and have no subject);
+    - retrieval quality is measured deterministically by retrieval_eval.py,
+      so context_precision / context_recall are not needed;
+    - no-RAG rows have no retrieved contexts, so faithfulness does not apply.
+    """
+    if s["system"] != "rag":
+        return []
+    return [
+        ("faithfulness", lambda: Faithfulness(llm=llm).ascore(
+            user_input=s["question"], response=s["answer"],
+            retrieved_contexts=s["contexts"])),
+    ]
 
 
 def is_rate_limit(err):
