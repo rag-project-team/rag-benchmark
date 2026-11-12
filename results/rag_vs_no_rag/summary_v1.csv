@@ -1,0 +1,16 @@
+﻿id,type,question,faithfulness_rag,correctness_rag,hallucination_rag,correctness_no_rag,hallucination_no_rag
+1,A,How long does one side of the record play?,1.0,correct,no,abstain,no
+2,A,What is the record made of?,1.0,correct,no,abstain,no
+3,A,How many images are on the record?,1.0,correct,no,abstain,no
+4,A,In how many languages are there spoken greetings on the record?,1.0,correct,no,abstain,no
+5,A,"Who served as sound engineer for the project, and on whose recommendation?",1.0,correct,no,abstain,no
+6,A,What budget did John Casani give Carl Sagan for the project?,1.0,correct,no,abstain,no
+7,A,Who provided the blank records for the Golden Record?,1.0,correct,no,abstain,no
+8,A,What award did the 40th anniversary edition of the record win?,1.0,correct,no,abstain,no
+9,A,"What is the half-life of the uranium-238 on the record's cover, and why is it there?",1.0,correct,no,abstain,no
+10,B,What does the Golden Record have in common with the Pioneer plaque?,0.4,partial,yes,partial,yes
+11,B,"Who chaired the committee that selected the record's content, and who was the creative director?",1.0,correct,no,abstain,no
+12,C,What was the exact launch date of Voyager 1?,nan,correct,no,incorrect,yes
+13,C,What does the Mandarin greeting on the record say?,nan,correct,no,correct,no
+14,D,How close will Voyager 1 come to the star Gliese 445?,1.0,partial,no,incorrect,yes
+15,D,What did EMI demand for including 'Here Comes the Sun' on the record?,1.0,partial,no,abstain,no
