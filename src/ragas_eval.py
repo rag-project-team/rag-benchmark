@@ -5,10 +5,13 @@ Judge LLM: Gemini (Google AI Studio, free tier) through Google's
 OpenAI-compatible endpoint. The API key is read from the GEMINI_API_KEY
 environment variable; it is never written to code or files.
 
-Metrics
-- RAG rows:    faithfulness, context_precision, context_recall, factual_correctness
-- no-RAG rows: factual_correctness (no retrieved contexts, so the
-               context-based metrics do not apply)
+Metric
+- RAG rows only: faithfulness (see metric_calls() for why the other
+  metrics were dropped). no-RAG rows have no retrieved contexts.
+- "I don't know" (abstention) answers contain no claims, so faithfulness
+  is undefined for them (RAGAS returns nan). They are not sent to the
+  judge; a row with score "nan" and error "skipped: abstention" is
+  written instead, and such rows count as done on the next run.
 
 The retrieved chunk texts are rebuilt from data/voyager_clean.txt with the
 same chunk_document() call rag_pipeline.py uses; their section titles are
@@ -108,18 +111,29 @@ def metric_calls(llm, s):
     ]
 
 
+ABSTENTION_ANSWERS = {"i don't know", "i do not know"}
+SKIP_ABSTENTION = "skipped: abstention (no claims to verify)"
+
+
+def is_abstention(answer):
+    """True if the answer is just "I don't know" (case/punctuation ignored)."""
+    text = answer.strip().lower().replace("’", "'").rstrip(".!")
+    return text in ABSTENTION_ANSWERS
+
+
 def is_rate_limit(err):
     text = str(err).lower()
     return "429" in text or "resource_exhausted" in text or "rate limit" in text or "quota" in text
 
 
 def load_done():
-    """(id, system, metric) triples that already have a numeric score."""
+    """(id, system, metric) triples that already have a numeric score,
+    or were skipped on purpose because the answer was an abstention."""
     if not OUT_FILE.exists():
         return set()
     done = set()
     for r in read_csv(OUT_FILE):
-        if r["score"] not in ("", "nan"):
+        if r["score"] not in ("", "nan") or r["error"] == SKIP_ABSTENTION:
             done.add((r["id"], r["system"], r["metric"]))
     return done
 
@@ -160,6 +174,19 @@ async def main():
             for metric, make_call in metric_calls(llm, s):
                 key = (s["id"], s["system"], metric)
                 if key in done:
+                    continue
+
+                if is_abstention(s["answer"]):
+                    writer.writerow({
+                        "id": s["id"], "type": s["type"], "system": s["system"],
+                        "metric": metric, "score": "nan",
+                        "error": SKIP_ABSTENTION, "seconds": 0,
+                        "judge_model": JUDGE_MODEL, "ragas_version": ragas.__version__,
+                        "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                    })
+                    f.flush()
+                    print(f"Q{s['id']:>2} {s['system']:<6} {metric:<20} nan  "
+                          f"(abstention, judge not called)")
                     continue
 
                 score, error, start = math.nan, "", time.time()

@@ -1,0 +1,25 @@
+﻿id,type,system,metric,score,error,seconds,judge_model,ragas_version,timestamp
+1,A,rag,faithfulness,1.0,,6.6,gemini-3.5-flash,0.4.3,2026-11-07T17:55:19+00:00
+1,A,rag,context_precision,1.0,,8.8,gemini-3.5-flash,0.4.3,2026-11-07T17:55:32+00:00
+1,A,rag,context_recall,1.0,,3.9,gemini-3.5-flash,0.4.3,2026-11-07T17:55:40+00:00
+1,A,rag,factual_correctness,0.0,,95.5,gemini-3.5-flash,0.4.3,2026-11-07T17:57:19+00:00
+1,A,no_rag,factual_correctness,0.0,,10.8,gemini-3.5-flash,0.4.3,2026-11-07T17:57:34+00:00
+2,A,rag,faithfulness,1.0,,10.2,gemini-3.5-flash,0.4.3,2026-11-07T17:57:48+00:00
+2,A,rag,context_precision,,"RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ",234.5,gemini-3.5-flash,0.4.3,2026-11-07T18:01:47+00:00
+3,A,rag,faithfulness,1.0,,6.8,gemini-3.5-flash,0.4.3,2026-11-08T08:53:13+00:00
+4,A,rag,faithfulness,1.0,,7.3,gemini-3.5-flash,0.4.3,2026-11-08T08:53:24+00:00
+5,A,rag,faithfulness,1.0,,8.5,gemini-3.5-flash,0.4.3,2026-11-08T08:53:36+00:00
+6,A,rag,faithfulness,1.0,,82.3,gemini-3.5-flash,0.4.3,2026-11-08T08:55:03+00:00
+7,A,rag,faithfulness,1.0,,9.3,gemini-3.5-flash,0.4.3,2026-11-08T08:55:16+00:00
+8,A,rag,faithfulness,1.0,,5.6,gemini-3.5-flash,0.4.3,2026-11-08T08:55:26+00:00
+9,A,rag,faithfulness,1.0,,13.4,gemini-3.5-flash,0.4.3,2026-11-08T08:55:43+00:00
+10,B,rag,faithfulness,0.4,,103.7,gemini-3.5-flash,0.4.3,2026-11-08T08:57:31+00:00
+11,B,rag,faithfulness,,"RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ",234.5,gemini-3.5-flash,0.4.3,2026-11-08T09:01:29+00:00
+12,C,rag,faithfulness,,"RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ",219.4,gemini-3.5-flash,0.4.3,2026-11-08T09:05:13+00:00
+13,C,rag,faithfulness,,"RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ",219.2,gemini-3.5-flash,0.4.3,2026-11-08T09:08:56+00:00
+14,D,rag,faithfulness,,"RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ",219.6,gemini-3.5-flash,0.4.3,2026-11-08T09:12:40+00:00
+11,B,rag,faithfulness,1.0,,11.4,gemini-3.5-flash,0.4.3,2026-11-12T13:36:31+00:00
+12,C,rag,faithfulness,nan,skipped: abstention (no claims to verify),0,gemini-3.5-flash,0.4.3,2026-11-12T13:36:35+00:00
+13,C,rag,faithfulness,nan,skipped: abstention (no claims to verify),0,gemini-3.5-flash,0.4.3,2026-11-12T13:36:35+00:00
+14,D,rag,faithfulness,1.0,,7.0,gemini-3.5-flash,0.4.3,2026-11-12T13:36:42+00:00
+15,D,rag,faithfulness,1.0,,7.7,gemini-3.5-flash,0.4.3,2026-11-12T13:36:53+00:00
