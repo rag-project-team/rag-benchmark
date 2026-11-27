@@ -43,6 +43,52 @@ SCOPES = ["all", "en", "tr"]
 #         "note": "Reason for the decision.",
 #     },
 RESOLUTIONS = {
+    # Team decisions (2026-11-27).
+    ("A08", "tr"): {
+        "correctness": "correct",
+        "hallucination": "no",
+        "note": "The question only asks for the rank; the answer gives 'second'. "
+                "'after the USA' in the reference is not asked by the question.",
+    },
+    ("B02", "tr"): {
+        "correctness": "partial",
+        "hallucination": "no",
+        "note": "Gives the Amazon basin area (7,000,000 km2) instead of the rainforest "
+                "area (5,500,000 km2); the drought part is correct. The wrong value is "
+                "taken from the text (basin area), not invented.",
+    },
+    ("B04", "en"): {
+        "correctness": "partial",
+        "hallucination": "yes",
+        "note": "Main connection is correct, but both deforestation rates are dated "
+                "2000-2005; in the text 19,018 km2 belongs to the previous five years. "
+                "This claim is not supported by the document.",
+    },
+    ("B04", "tr"): {
+        "correctness": "correct",
+        "hallucination": "no",
+        "note": "Both connections asked by the question are given and the added 18% "
+                "figure matches the text. 'Brazil is the second-largest soybean "
+                "producer' in the reference is not asked by the question.",
+    },
+    ("D02", "en"): {
+        "correctness": "partial",
+        "hallucination": "no",
+        "note": "D-type question: gives the research side but not the popular "
+                "perception that it brought an advantage (same rule as Voyager Q14/Q15).",
+    },
+    ("D02", "tr"): {
+        "correctness": "partial",
+        "hallucination": "no",
+        "note": "D-type question: answers only 'No' with neither the research reason "
+                "nor the popular perception side.",
+    },
+    ("D03", "en"): {
+        "correctness": "correct",
+        "hallucination": "no",
+        "note": "Both sides are given with figures (absorbs in typical years, released "
+                "carbon in 2005 and 2010). The 1975-1996 period is not asked by the question.",
+    },
 }
 
 

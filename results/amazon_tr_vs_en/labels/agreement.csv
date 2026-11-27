@@ -1,0 +1,7 @@
+﻿scope,label,n_rows,n_agree,raw_agreement,cohen_kappa
+all,correctness,50,43,0.86,0.184
+all,hallucination,50,49,0.98,0.0
+en,correctness,25,22,0.88,0.0
+en,hallucination,25,24,0.96,0.0
+tr,correctness,25,21,0.84,0.275
+tr,hallucination,25,25,1.0,1.0
